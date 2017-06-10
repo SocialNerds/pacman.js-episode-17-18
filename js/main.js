@@ -4,23 +4,19 @@
  - Sprite y positions: 0, 95, 191, 292, 396, 498.
  */
 let gameLoop;
-window.onload = function() {
+window.onload = () => {
   canvas = document.getElementById("pacman_canvas");
   canvasContext = canvas.getContext("2d");
 
   window.addEventListener(
     "keydown",
-    function(e) {
-      keyState[e.keyCode || e.which] = true;
-    },
-    true
+    e => keyState[e.keyCode || e.which] = true 
+    , true
   );
   window.addEventListener(
     "keyup",
-    function(e) {
-      keyState[e.keyCode || e.which] = false;
-    },
-    true
+    e => keyState[e.keyCode || e.which] = false
+    , true
   );
 
   gameLoop = setInterval(pacmanGame, 1000 / 16.67);
@@ -326,9 +322,7 @@ function detectPillCollision() {
       // If it is blue pill set chase mode on.
       if (pills[i][2] == 1) {
         bluePillIsActive = true;
-        setTimeout(function() {
-          bluePillIsActive = false;
-        }, Math.floor(Math.random() * 4000 + 3000));
+        setTimeout(() => bluePillIsActive = false, Math.floor(Math.random() * 4000 + 3000));
       }
     }
   }
